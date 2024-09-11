@@ -45,7 +45,8 @@ function state_safe()
 end
 
 function state_vtol()
-   if quadplane:in_vtol_mode() then 
+   pwm_sum = SRV_Channels:get_output_pwm(MOTOR5_FUN) + SRV_Channels:get_output_pwm(MOTOR6_FUN) + SRV_Channels:get_output_pwm(MOTOR7_FUN) + SRV_Channels:get_output_pwm(MOTOR8_FUN)
+   if quadplane:in_vtol_mode() or pwm_sum > 4010 then  
         return state_vtol, delay_1min
    end
    return state_safe, delay_1min
