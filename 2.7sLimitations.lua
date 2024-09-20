@@ -36,6 +36,9 @@ function state_safe()
    if pwm_max < 1857 then
         pwm_max = 1857
    end
+   if pwm_max > 2000 then
+        pwm_max = 2000
+   end
    Q_M_PWM_MAX:set(pwm_max)
    gcs:send_text(6, '2.7SLimitations set '..pwm_max)
    return state_safe, delay_1min
