@@ -21,10 +21,7 @@ function state_init()
 end
 
 function state_safe()
-   if looper < 9 then
-        looper = looper + 1 --les script proposent un delay max de return de 1 min, je veux 10 alors je rajoute un loop counter pour executer une fois sur 10
-        return state_safe, delay_1min
-   end
+
    looper = 0
    last_state = 0
    bat_v = battery:voltage(0)
